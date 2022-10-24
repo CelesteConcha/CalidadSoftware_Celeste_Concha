@@ -1,5 +1,4 @@
-package com.fca.calidad.CalidadSoftware_Celeste_Concha;
-
+package com.fca.calidad.pruebas;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -7,9 +6,11 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-{
-    /**
+
+
+public class AppTest {
+
+	/**
      * Rigorous Test :-)
      */
     @Test

@@ -1,4 +1,4 @@
-package doublesClass;
+package com.fca.calidad.doubles;
 
 public class Dependency {
 	private final SubDependency subDependency;
