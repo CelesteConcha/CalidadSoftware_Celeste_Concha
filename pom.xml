@@ -9,7 +9,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>CalidadSoftware_Celeste_Concha</name>
-  <!-- FIXME change it to the project's website -->
+ <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
@@ -41,7 +41,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-// prueba
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
