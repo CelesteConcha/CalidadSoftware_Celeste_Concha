@@ -1,11 +1,11 @@
 package com.fca.calidad.DoublesDAO;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +39,7 @@ Alumno a= new Alumno("nombre", "id", 14, "email");
 int sizeBefore = baseDatos.size();
 Boolean res = alumnoDAO.addAlumno(a);
 int sizeAfter =baseDatos.size();
- assertThat(sizeAfter,is(sizeBefore+1));
+ assertThat(sizeAfter, is(sizeBefore+1));
 
 	}
 
