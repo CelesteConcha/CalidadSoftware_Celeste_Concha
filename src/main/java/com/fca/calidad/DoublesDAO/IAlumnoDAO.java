@@ -1,0 +1,8 @@
+package com.fca.calidad.DoublesDAO;
+
+public interface IAlumnoDAO {
+public Boolean addAlumno(Alumno a);
+public Boolean deleteAlumno(Alumno a);
+public Boolean updataEmail(Alumno a);
+public Alumno searchAlumno(String id);
+}
