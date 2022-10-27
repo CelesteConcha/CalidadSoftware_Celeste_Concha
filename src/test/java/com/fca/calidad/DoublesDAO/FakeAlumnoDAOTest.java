@@ -87,7 +87,7 @@ Boolean res = alumnoDAO.deleteAlumno(a);
 int sizeAfter =baseDatos.size();
  assertThat(sizeAfter, is(sizeBefore+0));
 }
-	@Test
+	/*	@Test
 	public void searchAlumno() {
 		when(alumnoDAO.searchAlumno(any(String.class))).thenAnswer(new Answer<Alumno>(){
 			public Alumno answer(InvocationOnMock invocation) throws Throwable {
@@ -99,10 +99,10 @@ int sizeAfter =baseDatos.size();
 		}
 	);
 	
-Alumno id= new Alumno("nombre", "id", 14, "email");
+/*Alumno id= new Alumno("nombre", "id", 14, "email");
 int sizeBefore = baseDatos.size();
 Alumno res = alumnoDAO.searchAlumno(id);
 int sizeAfter =baseDatos.size();
- assertThat(sizeAfter, is(sizeBefore+0));
-}
+ assertThat(sizeAfter, is(sizeBefore+0));*/
+
 }
