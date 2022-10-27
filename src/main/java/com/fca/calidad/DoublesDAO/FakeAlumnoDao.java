@@ -15,7 +15,7 @@ public class FakeAlumnoDao implements IAlumnoDAO {
 	}
 
 	@Override
-	public Boolean updataEmail(Alumno a) {
+	public Boolean updateEmail(Alumno a) {
 		// TODO Auto-generated method stub
 		return null;
 	}
