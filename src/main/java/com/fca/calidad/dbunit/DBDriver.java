@@ -1,7 +1,4 @@
-package com.fca.calidad.dbjunit;
-
-import com.fca.calidad.dbjunit.Estudiante;
-import com.fca.calidad.dbjunit.IDAOEstudiante;
+package com.fca.calidad.dbunit;
 
 public class DBDriver {
 

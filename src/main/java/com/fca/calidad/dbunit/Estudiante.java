@@ -1,4 +1,4 @@
-package com.fca.calidad.dbjunit;
+package com.fca.calidad.dbunit;
 
 public class Estudiante {
 

@@ -1,4 +1,4 @@
-package com.fca.calidad.dbjunit;
+package com.fca.calidad.dbunit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,13 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.fca.calidad.dbjunit.Estudiante;
-import com.fca.calidad.dbjunit.IDAOEstudiante;
-
 public class DAOEstudianteSQLlite implements IDAOEstudiante {
 
 	private static final String DRIVER_NAME = "org.sqlite.JDBC";
-	private static final String DB_URL = "jdbc:sqlite:C:PONER AQUI SU RUTA\\Alumnos.db";
+	private static final String DB_URL = "jdbc:sqlite:C:\\Users\\A19211565\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\Alumnos.db";
 	private static final String ID= "";
 	private static final String PASS= "";
 	
