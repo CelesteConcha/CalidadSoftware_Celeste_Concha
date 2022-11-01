@@ -14,9 +14,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.ITable;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.HashMap;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+import org.hamcrest.Matcher;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 
 public class DAOEstudianteSQlite {
@@ -118,13 +128,24 @@ returnconnection;
 }
 
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void crearEstudianteTest() {
+		Estudiante alumno = new Estudiante("nombreprueba","apellidocrear","emailcrear","carreracrear");
+		
+		//insertar en la tabla 
+		int diNuevo =daoSQLite.createEstudiante(alumno);
+		//verificar 
+		int numEsperado =4;
+		int numReal =-1;
+		try {
+			IDataSet databaseDataSet = getConnection().createDataSet();
+			ITable actualTable = databaseDataSet.getTable("Estudiante");
+			numReal = actualTable.getRowCount();
+			assertThat(numEsperado,is(numReal));
+		}catch(Exception e) {
+			System.out.println("Error en crearAlumnoTest");
+		}
 	}
 
 }
