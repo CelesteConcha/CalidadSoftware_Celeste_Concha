@@ -45,7 +45,7 @@ public void setUp() throws Exception {
 	daoSQLite = new DAOEstudianteSQLlite ();
 	Connection jdbcConnection;
 	jdbcConnection = DriverManager.getConnection
-("jdbc:sqlite:C:\\Users\\alnmi\\OneDrive\\Escritorio\\Clases\\Calidad\\Proyectos java\\Alumnos.db");
+("jdbc:sqlite:C:\\Users\\A19211565\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\resources\\Alumnos.db");
 	connection = new DatabaseConnection(jdbcConnection);
 	try {		
 		PreparedStatement preparedStatement;
