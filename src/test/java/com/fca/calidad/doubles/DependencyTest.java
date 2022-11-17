@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
