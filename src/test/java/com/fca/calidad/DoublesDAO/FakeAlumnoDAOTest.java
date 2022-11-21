@@ -1,108 +1,116 @@
 package com.fca.calidad.DoublesDAO;
-
+//Prueba del mockito
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
-import java.util.HashMap;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
-import org.hamcrest.Matcher;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import static org.junit.Assert.*;
+import java.util.HashMap;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class FakeAlumnoDAOTest {
-	private FakeAlumnoDao alumnoDAO;
+	private FakeAlumnoDao alDAO;
 	public HashMap<String, Alumno> baseDatos;
 
 	@Before
 	public void setUp() throws Exception {
-		alumnoDAO = Mockito.mock(FakeAlumnoDao.class);
+		alDAO = Mockito.mock(FakeAlumnoDao.class);
 		baseDatos = new HashMap<String,Alumno>();
 	}
-	@Test
-	public void updateEmailTest() {
-		when(alumnoDAO.updateEmail(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
+	
+	//Realizamos las pruebas 
+	
+	//Prueba 1 agregar Alumno 
+		@Test
+	public void agregaAlumnoTest() {
+		when(alDAO.addAlumno(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
 			public Boolean answer(InvocationOnMock invocation) throws Throwable {
 				Alumno arg = (Alumno) invocation.getArguments() [0];
-				Alumno alumno = new Alumno("nombre", "id", 14, "email");
-				baseDatos.put("1", alumno);
+				baseDatos.put ("1", arg);
+				System.out.println("addAlumno=" + baseDatos.size() + "\n");
+				return true;
+			}
+		}
+	);
+Alumno a= new Alumno("nombre", "id", 14, "email");
+int sizeBefore = baseDatos.size();
+Boolean res = alDAO.addAlumno(a);
+int sizeAfter =baseDatos.size();
+ assertThat(sizeAfter, is(sizeBefore+1));
+	}
+	//prueba 2 Actualizar correo
+	@Test
+	public void actualizarEmailTest() {
+		when(alDAO.updateEmail(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
+			public Boolean answer(InvocationOnMock invocation) throws Throwable {
+				Alumno arg = (Alumno) invocation.getArguments() [0];
 				baseDatos.put(arg.getId(), arg);
 				return true;
 			}
 		}
 	);
-		//Stup
-		//agregarlo a la base de datos
-		Alumno alumno = new Alumno("nombre", "1", 14, "email");
-		baseDatos.put("1", alumno);
-		
-		alumno.setEmail("nuevoCorreo");
-		alumnoDAO.updateEmail(alumno);
+		Alumno al = new Alumno("nombre", "id", 14, "email");
+		baseDatos.put("1", al);
+		//cambiar correo
+		al.setEmail("nuevoCorreo");
+		//llamamos al método 
+		Boolean res = alDAO.updateEmail(al);
+		//verificamos
 		String valorEsperado = "nuevoCorreo";
 		String valorEjecucion = baseDatos.get("1").getEmail();
 		assertThat(valorEsperado,is(valorEjecucion));
+		System.out.println("Email Actualizado: " + res+"\n");
 	}
-	
-	
-
+	//Prueba 3 buscar alumno
 	@Test
-	public void agregarTest() {
-		when(alumnoDAO.addAlumno(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
+	public void buscaralumnoTest() {
+		when(alDAO.searchAlumno(any(String.class))).thenAnswer(new Answer<Alumno>() { //en el documento IAlumnoDAO está como Alumno (los otros están en boolean)
+			public Alumno answer(InvocationOnMock invocation) throws Throwable{
+				String id = (String) invocation.getArguments()[0];
+				Alumno alum = baseDatos.get(id);
+				return alum;
+			}
+		});
+		Alumno alum = new Alumno("nombre", "1", 14, "email");
+		baseDatos.put("1", alum);
+		Alumno res = alDAO.searchAlumno("1"); //Realizamos la busqueda
+		String buscanombres = res.getNombre();
+		String buscaid = res.getId();
+		int buscaedad = res.getEdad();
+		String buscaemail = res.getEmail();
+		String nombre = baseDatos.get("1").getNombre();
+		String id = baseDatos.get("1").getId();
+		int edad = baseDatos.get("1").getEdad();
+		String email = baseDatos.get("1").getEmail();
+		assertThat(nombre,is(buscanombres)); assertThat(id,is(buscaid));
+		assertThat(edad,is(buscaedad));assertThat(email,is(buscaemail));
+		System.out.println("Busqueda: " + res);}
+//Prueba 4 eliminar Alumno
+	@Test
+	public void eliminarAlumnoTest() {
+		when(alDAO.deleteAlumno(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
 			public Boolean answer(InvocationOnMock invocation) throws Throwable {
 				Alumno arg = (Alumno) invocation.getArguments() [0];
-				baseDatos.put ("1", arg);
-				System.out.println("Size despues=" + baseDatos.size() + "/n");
-				return true;
+				Alumno al= new Alumno("nombre", "id", 14, "email");
+				baseDatos.remove ("1",al);
+				System.out.println("eliminado=" + baseDatos.size() + "\n");
+				return false;
 			}
 		}
 	);
 	
 Alumno a= new Alumno("nombre", "id", 14, "email");
 int sizeBefore = baseDatos.size();
-Boolean res = alumnoDAO.addAlumno(a);
+Boolean res = alDAO.deleteAlumno(a);
 int sizeAfter =baseDatos.size();
- assertThat(sizeAfter, is(sizeBefore+1));
-
+ assertThat(sizeAfter, is(sizeBefore));
 	}
-	@Test
-	public void deleteAlumno() {
-		when(alumnoDAO.deleteAlumno(any(Alumno.class))).thenAnswer(new Answer<Boolean>(){
-			public Boolean answer(InvocationOnMock invocation) throws Throwable {
-				Alumno arg = (Alumno) invocation.getArguments() [0];
-				baseDatos.remove (arg.getId());
-				System.out.println("Size despues=" + baseDatos.size() + "/n");
-				return true;
-			}
-		}
-	);
-	
-Alumno a= new Alumno("nombre", "id", 14, "email");
-int sizeBefore = baseDatos.size();
-Boolean res = alumnoDAO.deleteAlumno(a);
-int sizeAfter =baseDatos.size();
- assertThat(sizeAfter, is(sizeBefore+0));
-}
-	/*	@Test
-	public void searchAlumno() {
-		when(alumnoDAO.searchAlumno(any(String.class))).thenAnswer(new Answer<Alumno>(){
-			public Alumno answer(InvocationOnMock invocation) throws Throwable {
-				String arg = (String) invocation.getArguments() [0];
-				baseDatos.toString();
-				System.out.println("Size despues=" + baseDatos.size() + "/n");
-			
-			}
-		}
-	);
-	
-/*Alumno id= new Alumno("nombre", "id", 14, "email");
-int sizeBefore = baseDatos.size();
-Alumno res = alumnoDAO.searchAlumno(id);
-int sizeAfter =baseDatos.size();
- assertThat(sizeAfter, is(sizeBefore+0));*/
-
 }
