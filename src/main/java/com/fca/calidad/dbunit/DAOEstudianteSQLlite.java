@@ -1,12 +1,6 @@
 package com.fca.calidad.dbunit;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+//Importación de elementos para conexión con SQLlite
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -122,7 +116,42 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante{
 		return result;
 		
 	}
-	
+	@Override
+	public boolean updateCarreraEstudiante(Estudiante e) {
+		
+		Connection conn = getConnection();
+		boolean result = false;
+
+		try {
+			// Declare statement query to run
+			PreparedStatement preparedStatement;
+			preparedStatement = conn.prepareStatement("UPDATE carrera Estudiante SET carrera = ? WHERE id = ?");
+			// Set the values to match in the ? on query
+			preparedStatement.setString(1, e.getCarrera());
+			
+			String aux = Integer.toString(e.getId());
+			
+			preparedStatement.setString(2, aux);
+
+			// Return the result of connection and statement
+			if (preparedStatement.executeUpdate() >= 1) {
+				result = true;
+			}
+			System.out.println("\n");
+			System.out.println("Carrera de alumno con ID: " + aux + " actualizado!");
+			System.out.println(">> Return: " + result + "\n");
+			// Close connection with the database
+			conn.close();
+			preparedStatement.close();
+
+		} catch (Exception e2) {
+			System.out.println(e2);
+		}
+		// Return statement
+		return result;
+		
+		
+	}
 	
 	@Override
 	public boolean updateEmailEstudiante(Estudiante e) {
@@ -249,4 +278,3 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante{
 	}
 
 }
-
