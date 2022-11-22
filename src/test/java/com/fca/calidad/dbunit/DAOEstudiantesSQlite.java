@@ -36,7 +36,7 @@ public DAOEstudiantesSQlite(String name)
 protected IDataSet getDataSet() throws Exception {
 	// TODO Auto-generated method stub
 	return new FlatXmlDataSetBuilder().build
-			(new File("./src/resources/initDB.xml")); 
+			(new File("C:\\Users\\celeste\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\resources\\initDB.xml")); 
 }
 
 
@@ -46,7 +46,7 @@ public void setUp() throws Exception {
 	daoSQLite = new DAOEstudianteSQLlite ();
 	Connection jdbcConnection;
 	jdbcConnection = DriverManager.getConnection
-			("jdbc:sqlite:.\\src\\resources\\Alumnos.db");
+			("jdbc:sqlite:C:\\Users\\celeste\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\resources\\Alumnos.db");
 	connection = new DatabaseConnection(jdbcConnection);
 	try {		
 		PreparedStatement preparedStatement;
