@@ -46,7 +46,10 @@ jobs:
           name: Test
           command: mvn test -Dtest="GoogleTest"
           # Then run your tests!
-          
+      - run:
+          name: Test
+          command: mvn test -Dtest="MernCrudTest"
+          # Then run your tests!
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
