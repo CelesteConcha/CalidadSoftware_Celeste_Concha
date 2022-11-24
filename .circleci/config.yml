@@ -31,24 +31,24 @@ jobs:
           
           
       - run:
-          name: Test
+          name: AritmeticaParametrizadaTest
           command: mvn test -Dtest="AritmeticaParametrizadaTest"
           # Then run your tests!
       - run:
-          name: Test
+          name: CalculadoraTest
           command: mvn test -Dtest="Calculadora"
           # Then run your tests!
       - run:
-          name: Test
+          name: FakeAlumnoDAO(mockito)Test
           command: mvn test -Dtest="FakeAlumnoDAOTest"
           # Then run your tests!
       - run:
-          name: Test
+          name: GoogleTest
           command: mvn test -Dtest="GoogleTest"
           # Then run your tests!
           
       - run:
-          name: Test
+          name: MernCrudTest
           command: mvn test -Dtest="MernCrudTest"
           # Then run your tests!
 
