@@ -46,7 +46,6 @@ jobs:
           name: GoogleTest
           command: mvn test -Dtest="GoogleTest"
           # Then run your tests!
-          
       - run:
           name: MernCrudTest
           command: mvn test -Dtest="MernCrudTest"
