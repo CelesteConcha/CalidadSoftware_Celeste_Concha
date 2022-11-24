@@ -1,5 +1,6 @@
 package com.fca.calidad.dbunit;
 
+//Importación de elementos para conexión con SQLlite
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DAOEstudianteSQLlite implements IDAOEstudiante {
-
+public class DAOEstudianteSQLlite implements IDAOEstudiante{
+	
 	private static final String DRIVER_NAME = "org.sqlite.JDBC";
-	private static final String DB_URL = "jdbc:sqlite:C:\\Users\\A19211565\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\Alumnos.db";
+	private static final String DB_URL = "jdbc:sqlite:C:\\Users\\celeste\\Downloads\\Git\\CalidadSoftware_Celeste_Concha\\src\\resources\\Alumnos.db";
 	private static final String ID= "";
 	private static final String PASS= "";
 	
@@ -102,7 +103,7 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante {
 				result = true;
 			}
 			System.out.println("\n");
-			System.out.println("Estudiante eliminado con exito");
+			System.out.println("¡Estudiante eliminado con exito!:D");
 			System.out.println(">> Return: " + result + "\n");
 			// Close connection with the database
 			conn.close();
@@ -115,7 +116,43 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante {
 		return result;
 		
 	}
+	@Override
+	public boolean updateCarreraEstudiante(Estudiante e) {
+		
+		Connection conn = getConnection();
+		boolean result = false;
 
+		try {
+			// Declare statement query to run
+			PreparedStatement preparedStatement;
+			preparedStatement = conn.prepareStatement("UPDATE carrera Estudiante SET carrera = ? WHERE id = ?");
+			// Set the values to match in the ? on query
+			preparedStatement.setString(1, e.getCarrera());
+			
+			String aux = Integer.toString(e.getId());
+			
+			preparedStatement.setString(2, aux);
+
+			// Return the result of connection and statement
+			if (preparedStatement.executeUpdate() >= 1) {
+				result = true;
+			}
+			System.out.println("\n");
+			System.out.println("Carrera de alumno con ID: " + aux + " actualizado!");
+			System.out.println(">> Return: " + result + "\n");
+			// Close connection with the database
+			conn.close();
+			preparedStatement.close();
+
+		} catch (Exception e2) {
+			System.out.println(e2);
+		}
+		// Return statement
+		return result;
+		
+		
+	}
+	
 	@Override
 	public boolean updateEmailEstudiante(Estudiante e) {
 		
@@ -138,7 +175,46 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante {
 				result = true;
 			}
 			System.out.println("\n");
-			System.out.println("Correo de alumno con ID: " + aux + " actualizado");
+			System.out.println("Email de alumno con ID: " + aux + " actualizado!");
+			System.out.println(">> Return: " + result + "\n");
+			// Close connection with the database
+			conn.close();
+			preparedStatement.close();
+
+		} catch (Exception e2) {
+			System.out.println(e2);
+		}
+		// Return statement
+		return result;
+		
+		
+	}
+	
+	
+	//Agregamos un metodo más de manera que, ahora también podamos realizar la actualización del nombre.
+	@Override
+	public boolean updateNombreEstudiante(Estudiante e) {
+		
+		Connection conn = getConnection();
+		boolean result = false;
+
+		try {
+			// Declare statement query to run
+			PreparedStatement preparedStatement;
+			preparedStatement = conn.prepareStatement("UPDATE Estudiante SET nombre = ? WHERE id = ?");
+			// Set the values to match in the ? on query
+			preparedStatement.setString(1, e.getNombre());
+			
+			String aux = Integer.toString(e.getId());
+			
+			preparedStatement.setString(2, aux);
+
+			// Return the result of connection and statement
+			if (preparedStatement.executeUpdate() >= 1) {
+				result = true;
+			}
+			System.out.println("\n");
+			System.out.println("Nombre de alumno con ID: " + aux + " actualizado");
 			System.out.println(">> Return: " + result + "\n");
 			// Close connection with the database
 			conn.close();
@@ -200,7 +276,5 @@ public class DAOEstudianteSQLlite implements IDAOEstudiante {
 		return retrieved;	
 	
 	}
-	
-
 
 }
