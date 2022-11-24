@@ -32,7 +32,7 @@ jobs:
           
       - run:
           name: Test
-          command: mvn test -Dtest="AritmeticaParametrizadaTest"
+          command: mvn test -Dtest="Aritmetica"
           # Then run your tests!
           
           
