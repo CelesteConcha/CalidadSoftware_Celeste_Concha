@@ -23,15 +23,7 @@ jobs:
           name: Build
           command: mvn -B -DskipTests clean package
       # Then run your tests!
-     
-     - run:
-          name: Test
-          command: mvn test -Dtest="Calculadora"
-          
-          # Then run your tests!
-     
-     
-     - run:
+      - run:
           name: Test
           command: mvn test -Dtest="FakeAlumnoDAOTest"
           
@@ -43,15 +35,7 @@ jobs:
           command: mvn test -Dtest="AritmeticaParametrizadaTest"
           # Then run your tests!
           
-          - run:
-          name: Test
-          command: mvn test -Dtest="GoogleTest"
-          # Then run your tests!
           
-          - run:
-          name: Test
-          command: mvn test -Dtest="MernCrudTest"
-          # Then run your tests!
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
