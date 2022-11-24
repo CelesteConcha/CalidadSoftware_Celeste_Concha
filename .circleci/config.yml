@@ -46,9 +46,9 @@ jobs:
           name: GoogleTest
           command: mvn test -Dtest="GoogleTest"
           # Then run your tests!
-      - run:
-          name: MernCrudTest
-          command: mvn test -Dtest="MernCrudTest"
+   #   - run:
+    #      name: MernCrudTest
+     #     command: mvn test -Dtest="MernCrudTest"
           # Then run your tests!
 
 # Invoke jobs via workflows
