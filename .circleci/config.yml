@@ -42,13 +42,13 @@ jobs:
           name: FakeAlumnoDAO(mockito)Test
           command: mvn test -Dtest="FakeAlumnoDAOTest"
           # Then run your tests!
-      - run:
-          name: GoogleTest
-          command: mvn test -Dtest="GoogleTest"
-          # Then run your tests!
    #   - run:
-    #      name: MernCrudTest
-     #     command: mvn test -Dtest="MernCrudTest"
+    #      name: GoogleTest
+     #     command: mvn test -Dtest="GoogleTest"
+          # Then run your tests!
+      - run:
+          name: MernCrudTest
+          command: mvn test -Dtest="MernCrudTest"
           # Then run your tests!
 
 # Invoke jobs via workflows
