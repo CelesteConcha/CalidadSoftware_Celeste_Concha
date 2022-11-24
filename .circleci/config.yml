@@ -48,7 +48,7 @@ jobs:
           # Then run your tests!
       - run:
           name: MernCrudTest
-          command: mvn test -Dtest="MernCrudTest"
+          command: mvn test -Dtest="CrudTest"
           # Then run your tests!
 
 # Invoke jobs via workflows
