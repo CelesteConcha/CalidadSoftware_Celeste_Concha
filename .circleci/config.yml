@@ -42,9 +42,9 @@ jobs:
           name: FakeAlumnoDAO(mockito)Test
           command: mvn test -Dtest="FakeAlumnoDAOTest"
           # Then run your tests!
-   #   - run:
-    #      name: GoogleTest
-     #     command: mvn test -Dtest="GoogleTest"
+      - run:
+          name: GoogleTest
+          command: mvn test -Dtest="GoogleTest"
           # Then run your tests!
       - run:
           name: MernCrudTest
