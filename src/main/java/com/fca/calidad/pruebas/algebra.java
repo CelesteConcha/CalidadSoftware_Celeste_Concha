@@ -1,4 +1,4 @@
-package com.fca.calidad.Calculadora;
+package com.fca.calidad.pruebas;
 
 public class algebra {
 	
