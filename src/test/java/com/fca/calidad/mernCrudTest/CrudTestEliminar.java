@@ -13,7 +13,7 @@ import java.io.File;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 
-public class CrudTest {
+public class CrudTestEliminar {
 	
   private WebDriver driver;
   private String baseUrl;
@@ -30,24 +30,13 @@ public class CrudTest {
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     js = (JavascriptExecutor) driver;
   }
-  public void testCrear() throws Exception {
-	    driver.get("https://mern-crud.herokuapp.com/");
-	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
-	    driver.findElement(By.name("name")).click();
-	    driver.findElement(By.name("name")).clear();
-	    driver.findElement(By.name("name")).sendKeys("prueva192115");
-	    driver.findElement(By.name("email")).click();
-	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("prueva192115@net.com");
-	    driver.findElement(By.name("age")).click();
-	    driver.findElement(By.name("age")).clear();
-	    driver.findElement(By.name("age")).sendKeys("23");
-	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Gender'])[2]/following::div[2]")).click();
-	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Male'])[2]/following::div[1]")).click();
-	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Woah!'])[1]/following::button[1]")).click();
-	  }
   
- 
+  @Test
+  public void testEliminar() throws Exception {
+    driver.get("https://mern-crud.herokuapp.com/");
+    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button[2]")).click();
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Prueba192115'])[2]/following::button[1]")).click();
+  }
   @After
   public void tearDown() throws Exception {
     driver.quit();
