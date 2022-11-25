@@ -36,7 +36,7 @@ public class GoogleTest {
     driver.findElement(By.xpath("//div[@id='rso']/div/div/div/div/div/div/div/div/a/h3")).click();
     driver.get("https://siies.yucatan.gob.mx/yucatani6/");
     assertEquals("Yucatáni6", driver.getTitle());
-    System.out.println("El titulo es correcto");
+    System.out.println("¡¡¡El titulo es Yucatáni6!!!");
   }
   
 
