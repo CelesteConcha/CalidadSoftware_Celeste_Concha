@@ -47,6 +47,10 @@ jobs:
           command: mvn test -Dtest="MernCrudAgregarTest"
           # Then run your tests!
       - run:
+          name: MernCrudTestBuscar
+          command: mvn test -Dtest="MernCrudBuscar"
+          # Then run your tests!          
+      - run:
           name: MernCrudTestEditar
           command: mvn test -Dtest="MernCrudEditarTest"
           # Then run your tests!
