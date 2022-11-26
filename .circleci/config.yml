@@ -26,10 +26,7 @@ jobs:
       - run:
           name: Calculadora
           command: mvn test -Dtest="Calculadora"
-          
           # Then run your tests!
-          
-          
       - run:
           name: AritmeticaParametrizadaTest
           command: mvn test -Dtest="AritmeticaParametrizadaTest"
@@ -38,6 +35,7 @@ jobs:
           name: Mockito FakeAlumnoDAO
           command: mvn test -Dtest="FakeAlumnoDAOTest"
           # Then run your tests!
+          
       - run:
           name: GoogleTest
           command: mvn test -Dtest="GoogleTest"
