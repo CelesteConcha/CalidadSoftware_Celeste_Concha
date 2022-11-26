@@ -16,64 +16,51 @@ private algebra aritmetica;
 	@Before
 	public void setUp() throws Exception {
 		aritmetica = new algebra();
-		System.out.println("Este es el before");
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		System.out.println("Este es el after");
+		
 	}
 
 	@Test
 	public void sumaTest() {
-		//Inicializar
-		double resultadoEsperado= 4; //2+2
+		double resultadoEsperado = 4; //2+2
 		double resultadoEjecucion = 0;
-		//Ejercicio del codigo
-		resultadoEjecucion = aritmetica.suma(2,2);
-		//Verificar
+		resultadoEjecucion = aritmetica.suma(2.0, 2.0);
 		assertThat(resultadoEsperado, is(resultadoEjecucion));
+		System.out.println("Resultado Suma "+resultadoEjecucion);
 	}
-
 	@Test
 	public void restaTest() {
-		//Inicializar
-		double resultadoEsperado= 1; //3-2
+		double resultadoEsperado = 4; 
 		double resultadoEjecucion = 0;
-		//Ejercicio del codigo
-		resultadoEjecucion = aritmetica.resta(3,2);
-		//Verificar
+		resultadoEjecucion = aritmetica.resta(6.0, 2.0);
 		assertThat(resultadoEsperado, is(resultadoEjecucion));
+		System.out.println("Resultado resta " +resultadoEjecucion);
 	}
 	
 	@Test
-	public void multiplicaTest() {
-		//Inicializar
-		double resultadoEsperado= 9; //3x3
+	public void multiplicacionTest( ) {
+		double resultadoEsperado = 6; 
 		double resultadoEjecucion = 0;
-		//Ejercicio del codigo
-		resultadoEjecucion = aritmetica.multiplicacion(3,3);
-		//Verificar
+		resultadoEjecucion = aritmetica.multiplicacion(3.0, 2.0);
 		assertThat(resultadoEsperado, is(resultadoEjecucion));
+		System.out.println("Resultado multiplicación " +resultadoEjecucion);
 	}
 	
+	@Test
+	public void divisionTest() {
+		double resultadoEsperado = 6; 
+		double resultadoEjecucion = 0;
+		resultadoEjecucion = aritmetica.division(18.0, 3.0);
+		assertThat(resultadoEsperado, is(resultadoEjecucion));
+		System.out.println("Resultado división " +resultadoEjecucion);
+	}
 	
 	@Test
 	public void divideTestEntre0() {
-		//Inicializar
 		double pInfiniteDouble = Double.POSITIVE_INFINITY; 
-		double resultadoEsperado= pInfiniteDouble; //10/
+		double resultadoEsperado= pInfiniteDouble; 
 		double resultadoEjecucion = 0;
-		//Ejercicio del codigo
 		resultadoEjecucion = aritmetica.division(10,0);
-		//Verificar
 		assertThat(resultadoEsperado, is(resultadoEjecucion));
+		System.out.println("Resultado división entre 0 " +resultadoEjecucion);
 	}
-	
-	@Test(expected = ArithmeticException.class)
-	public void divideTestExcepcion() {
-		//No se verifica, solo se llama a la ejecucion cuando son excepciones
-		aritmetica.divisionEntera(10,0);
-	}
-	
 }
